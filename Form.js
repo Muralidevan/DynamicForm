@@ -6,6 +6,7 @@ export default class Form extends Component {
         super(props);
         this.state = { values: [],radioValues:[],
             text:'',
+            title:'',description:'',
    options:['short_answer','radio','checkbox'],
 selectedOption:'short_answer' };
       }
@@ -68,11 +69,12 @@ selectedOption:'short_answer' };
         return (
             <div>
                 <div className="card">
+                <form onSubmit={this.handleSubmit} className="form">
 
-                 <h1>Form Title </h1>
-                 <br/>
-
-<p>Form Description </p>
+                 <input type="text" value={this.state.title} name="text" placeholder="Form Title" onChange={this.handleText}/>
+          <br/>
+                 <input type="text" value={this.state.description} name="text" placeholder="Form Description" onChange={this.handleText}/>
+</form>
 </div>
          <div  className="card">   
          
@@ -91,7 +93,7 @@ selectedOption:'short_answer' };
          <br/>
         
         
-         {this.state.selectedOption==='short_answer'?( <input type="text" value={this.state.text} name="text" placeholder="short answer text" onChange={this.handleText}/>):''}
+         {this.state.selectedOption==='short_answer'?( <input type="text" value={this.state.text} name="text" placeholder="short answer text" onChange={this.handleText} style={{	borderBottom: '2px dotted #a9a9a9'}}/>):''}
              
             
             {   this.state.selectedOption==='checkbox' && 
